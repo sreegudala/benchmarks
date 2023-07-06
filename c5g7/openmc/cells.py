@@ -70,3 +70,205 @@ cells['Guide Tube Moderator'].fill      = materials['Water']
 cells['Control Rod Moderator'].fill     = materials['Water']
 cells['Reflector'].fill                 = materials['Water']
 cells['UO2 Pin'].fill                   = materials['Water']
+
+
+
+
+divisions = "subdiv"
+
+cells['UO2 Pincell']                    = openmc.Cell(name='UO2 Pincell')
+cells['UO2 Pincell'].region             = surfaces['Box']
+if divisions == "original":
+    surfs = [surfaces['Pin Cell ZCylinder']]
+    mats  = [materials['UO2'],materials['Water']]
+    subdivs_r = None
+    subdivs_a = None
+    cells['UO2 Pincell'].fill = openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a)
+elif divisions == "with mod":
+    surfs = [surfaces['Pin Cell ZCylinder'],surfaces['Moderator Cylinder']]
+    mats  = [materials['UO2'],materials['Water'],materials['Water']]
+    subdivs_r = None
+    subdivs_a = None
+    cells['UO2 Pincell'].fill = openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a)
+else:
+    surfs = [surfaces['Pin Cell ZCylinder'],surfaces['Moderator Cylinder']]
+    mats  = [materials['UO2'],materials['Water'],materials['Water']]
+    subdivs_r = {
+            0 : 3,
+            1 : 3
+            }
+    subdivs_a = {
+            0 : 8,
+            1 : 8
+            }
+    cells['UO2 Pincell'].fill = openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a)
+
+
+cells['MOX 4.3% Pincell']                    = openmc.Cell(name='MOX 4.3% Pincell')
+cells['MOX 4.3% Pincell'].region             = surfaces['Box']
+if divisions == "original":
+    surfs = [surfaces['Pin Cell ZCylinder']]
+    mats  = [materials['MOX 4.3%'],materials['Water']]
+    subdivs_r = None
+    subdivs_a = None
+    cells['MOX 4.3% Pincell'].fill = openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a)
+elif divisions == "with mod":
+    surfs = [surfaces['Pin Cell ZCylinder'],surfaces['Moderator Cylinder']]
+    mats  = [materials['MOX 4.3%'],materials['Water'],materials['Water']]
+    subdivs_r = None
+    subdivs_a = None
+    cells['MOX 4.3% Pincell'].fill = openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a)
+else:
+    surfs = [surfaces['Pin Cell ZCylinder'],surfaces['Moderator Cylinder']]
+    mats  = [materials['MOX 4.3%'],materials['Water'],materials['Water']]
+    subdivs_r = {
+            0 : 3,
+            1 : 3
+            }
+    subdivs_a = {
+            0 : 8,
+            1 : 8
+            }
+    cells['MOX 4.3% Pincell'].fill = openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a)
+
+
+cells['MOX 7.0% Pincell']                    = openmc.Cell(name='MOX 7.0% Pincell')
+cells['MOX 7.0% Pincell'].region             = surfaces['Box']
+if divisions == "original":
+    surfs = [surfaces['Pin Cell ZCylinder']]
+    mats  = [materials['MOX 7.0%'],materials['Water']]
+    subdivs_r = None
+    subdivs_a = None
+    cells['MOX 7.0% Pincell'].fill = openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a)
+elif divisions == "with mod":
+    surfs = [surfaces['Pin Cell ZCylinder'],surfaces['Moderator Cylinder']]
+    mats  = [materials['MOX 7.0%'],materials['Water'],materials['Water']]
+    subdivs_r = None
+    subdivs_a = None
+    cells['MOX 7.0% Pincell'].fill = openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a)
+else:
+    surfs = [surfaces['Pin Cell ZCylinder'],surfaces['Moderator Cylinder']]
+    mats  = [materials['MOX 7.0%'],materials['Water'],materials['Water']]
+    subdivs_r = {
+            0 : 3,
+            1 : 3
+            }
+    subdivs_a = {
+            0 : 8,
+            1 : 8
+            }
+    cells['MOX 7.0% Pincell'].fill = openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a)
+
+
+cells['MOX 8.7% Pincell']                    = openmc.Cell(name='MOX 8.7% Pincell')
+cells['MOX 8.7% Pincell'].region             = surfaces['Box']
+if divisions == "original":
+    surfs = [surfaces['Pin Cell ZCylinder']]
+    mats  = [materials['MOX 8.7%'],materials['Water']]
+    subdivs_r = None
+    subdivs_a = None
+    cells['MOX 8.7% Pincell'].fill = openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a)
+elif divisions == "with mod":
+    surfs = [surfaces['Pin Cell ZCylinder'],surfaces['Moderator Cylinder']]
+    mats  = [materials['MOX 8.7%'],materials['Water'],materials['Water']]
+    subdivs_r = None
+    subdivs_a = None
+    cells['MOX 8.7% Pincell'].fill = openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a)
+else:
+    surfs = [surfaces['Pin Cell ZCylinder'],surfaces['Moderator Cylinder']]
+    mats  = [materials['MOX 8.7%'],materials['Water'],materials['Water']]
+    subdivs_r = {
+            0 : 3,
+            1 : 3
+            }
+    subdivs_a = {
+            0 : 8,
+            1 : 8
+            }
+    cells['MOX 8.7% Pincell'].fill = openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a)
+
+
+cells['Fission Chamber Pincell']                    = openmc.Cell(name='Fission Chamber Pincell')
+cells['Fission Chamber Pincell'].region             = surfaces['Box']
+if divisions == "original":
+    surfs = [surfaces['Pin Cell ZCylinder']]
+    mats  = [materials['Fission Chamber'],materials['Water']]
+    subdivs_r = None
+    subdivs_a = None
+    cells['Fission Chamber Pincell'].fill = openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a)
+elif divisions == "with mod":
+    surfs = [surfaces['Pin Cell ZCylinder'],surfaces['Moderator Cylinder']]
+    mats  = [materials['Fission Chamber'],materials['Water'],materials['Water']]
+    subdivs_r = None
+    subdivs_a = None
+    cells['Fission Chamber Pincell'].fill = openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a)
+else:
+    surfs = [surfaces['Pin Cell ZCylinder'],surfaces['Moderator Cylinder']]
+    mats  = [materials['Fission Chamber'],materials['Water'],materials['Water']]
+    subdivs_r = {
+            0 : 3,
+            1 : 3
+            }
+    subdivs_a = {
+            0 : 8,
+            1 : 8
+            }
+    cells['Fission Chamber Pincell'].fill = openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a)
+
+
+cells['Guide Tube Pincell']                    = openmc.Cell(name='Guide Tube Pincell')
+cells['Guide Tube Pincell'].region             = surfaces['Box']
+if divisions == "original":
+    surfs = [surfaces['Pin Cell ZCylinder']]
+    mats  = [materials['Guide Tube'],materials['Water']]
+    subdivs_r = None
+    subdivs_a = None
+    cells['Guide Tube Pincell'].fill = openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a)
+elif divisions == "with mod":
+    surfs = [surfaces['Pin Cell ZCylinder'],surfaces['Moderator Cylinder']]
+    mats  = [materials['Guide Tube'],materials['Water'],materials['Water']]
+    subdivs_r = None
+    subdivs_a = None
+    cells['Guide Tube Pincell'].fill = openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a)
+else:
+    surfs = [surfaces['Pin Cell ZCylinder'],surfaces['Moderator Cylinder']]
+    mats  = [materials['Guide Tube'],materials['Water'],materials['Water']]
+    subdivs_r = {
+            0 : 3,
+            1 : 3
+            }
+    subdivs_a = {
+            0 : 8,
+            1 : 8
+            }
+    cells['Guide Tube Pincell'].fill = openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a)
+
+
+cells['Control Rod Pincell']                    = openmc.Cell(name='Control Rod Pincell')
+cells['Control Rod Pincell'].region             = surfaces['Box']
+if divisions == "original":
+    surfs = [surfaces['Pin Cell ZCylinder']]
+    mats  = [materials['Control Rod'],materials['Water']]
+    subdivs_r = None
+    subdivs_a = None
+    cells['Control Rod Pincell'].fill = openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a)
+elif divisions == "with mod":
+    surfs = [surfaces['Pin Cell ZCylinder'],surfaces['Moderator Cylinder']]
+    mats  = [materials['Control Rod'],materials['Water'],materials['Water']]
+    subdivs_r = None
+    subdivs_a = None
+    cells['Control Rod Pincell'].fill = openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a)
+else:
+    surfs = [surfaces['Pin Cell ZCylinder'],surfaces['Moderator Cylinder']]
+    mats  = [materials['Control Rod'],materials['Water'],materials['Water']]
+    subdivs_r = {
+            0 : 3,
+            1 : 3
+            }
+    subdivs_a = {
+            0 : 8,
+            1 : 8
+            }
+    cells['Control Rod Pincell'].fill = openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a)
+
+

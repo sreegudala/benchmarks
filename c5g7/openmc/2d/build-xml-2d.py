@@ -11,8 +11,8 @@ from tally import tallies
 ###############################################################################
 
 # OpenMC simulation parameters
-batches = 20000
-inactive = 500
+batches = 100
+inactive = 50
 particles = 10000
 
 ###############################################################################
@@ -78,7 +78,7 @@ plot_1.filename = 'plot_1'
 plot_1.origin = [0.0, 0.0, 0.0]
 plot_1.width = [64.26, 64.26]
 plot_1.pixels = [500, 500]
-plot_1.color_by = 'material'
+plot_1.color_by = 'cell'
 plot_1.basis = 'xy'
 
 # Instantiate a Plots collection and export to XML

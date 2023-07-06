@@ -9,6 +9,7 @@ surfaces = {}
 
 # Instantiate Pin Cell ZCylinder surface
 surfaces['Pin Cell ZCylinder'] = openmc.ZCylinder(x0=0, y0=0, r=0.54, name='Pin Cell ZCylinder')
+surfaces['Moderator Cylinder'] = openmc.ZCylinder(x0=0, y0=0, r=0.75, name='Moderator Cylinder')
 surfaces['Core x-min']         = openmc.XPlane(x0=-32.13, name='Core x-min')
 surfaces['Core x-max']         = openmc.XPlane(x0= 32.13, name='Core x-max')
 surfaces['Core y-min']         = openmc.YPlane(y0=-32.13, name='Core y-min')
@@ -21,6 +22,7 @@ surfaces['Pin x-min']          = openmc.XPlane(x0=-0.63, name='Pin x-min')
 surfaces['Pin x-max']          = openmc.XPlane(x0=+0.63, name='Pin x-max')
 surfaces['Pin y-min']          = openmc.YPlane(y0=-0.63, name='Pin y-min')
 surfaces['Pin y-max']          = openmc.YPlane(y0=+0.63, name='Pin y-max')
+surfaces['Box']                = openmc.rectangular_prism(1.26, 1.26)
 
 surfaces['Core x-max'].boundary_type       = 'vacuum'
 surfaces['Core y-min'].boundary_type       = 'vacuum'
@@ -34,3 +36,4 @@ surfaces['Pin x-max'].boundary_type        = 'reflective'
 surfaces['Pin y-min'].boundary_type        = 'reflective'
 surfaces['Pin y-max'].boundary_type        = 'reflective'
 surfaces['Core x-min'].boundary_type       = 'reflective'
+surfaces['Box'].boundary_type              = 'reflective';
