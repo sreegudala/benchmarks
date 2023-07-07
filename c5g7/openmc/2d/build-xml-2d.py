@@ -46,6 +46,7 @@ cells['Core'].fill = lattices['Core']
 # Instantiate a Geometry, register the root Universe, and export to XML
 geometry = openmc.Geometry()
 geometry.root_universe = universes['Root']
+geometry.remove_redundant_surfaces()
 geometry.export_to_xml()
 
 

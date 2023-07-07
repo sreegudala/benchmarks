@@ -1,5 +1,5 @@
 import openmc
-from cells import cells
+from cells import cells, matsArray, universesArray
 
 ###############################################################################
 #                     Create a dictionary of all shared universes
@@ -23,27 +23,14 @@ universes['MOX Rodded Assembly']         = openmc.Universe(universe_id=22, name=
 universes['Reflector Unrodded Assembly'] = openmc.Universe(universe_id=23, name='Reflector Unrodded Assembly')
 universes['Reflector Rodded Assembly']   = openmc.Universe(universe_id=24, name='Reflector Rodded Assembly')
 
+
 # Register Cells with Universes
 universes['Root']                       .add_cell(cells['Core'])
-#universes['UO2']                        .add_cells([cells['UO2'], cells['UO2 Moderator']])
-universes['UO2']                        .add_cell(cells['UO2 Pincell'])
-#universes['MOX 4.3%']                   .add_cells([cells['MOX 4.3%'], cells['MOX 4.3% Moderator']])
-universes['MOX 4.3%']                   .add_cell(cells['MOX 4.3% Pincell'])
 
-#universes['MOX 7.0%']                   .add_cells([cells['MOX 7.0%'], cells['MOX 7.0% Moderator']])
-universes['MOX 7.0%']                   .add_cell(cells['MOX 7.0% Pincell'])
 
-#universes['MOX 8.7%']                   .add_cells([cells['MOX 8.7%'], cells['MOX 8.7% Moderator']])
-universes['MOX 8.7%']                   .add_cell(cells['MOX 8.7% Pincell'])
+for mat, universe in zip(matsArray, universesArray):
+    universes[mat] = universe
 
-#universes['Fission Chamber']            .add_cells([cells['Fission Chamber'], cells['Fission Chamber Moderator']])
-universes['Fission Chamber']            .add_cell(cells['Fission Chamber Pincell'])
-
-#universes['Guide Tube']                 .add_cells([cells['Guide Tube'], cells['Guide Tube Moderator']])
-universes['Guide Tube']                 .add_cell(cells['Guide Tube Pincell'])
-
-#universes['Control Rod']                .add_cells([cells['Control Rod'], cells['Control Rod Moderator']])
-universes['Control Rod']                .add_cell(cells['Control Rod Pincell'])
 
 universes['Reflector']                  .add_cell(cells['Reflector'])
 universes['UO2 Unrodded Assembly']      .add_cell(cells['UO2 Unrodded Assembly'])

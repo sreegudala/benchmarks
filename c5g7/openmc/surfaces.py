@@ -9,7 +9,7 @@ surfaces = {}
 
 # Instantiate Pin Cell ZCylinder surface
 surfaces['Pin Cell ZCylinder'] = openmc.ZCylinder(x0=0, y0=0, r=0.54, name='Pin Cell ZCylinder')
-surfaces['Moderator Cylinder'] = openmc.ZCylinder(x0=0, y0=0, r=0.75, name='Moderator Cylinder')
+surfaces['Moderator Cylinder'] = openmc.ZCylinder(x0=0, y0=0, r=0.892, name='Moderator Cylinder')
 surfaces['Core x-min']         = openmc.XPlane(x0=-32.13, name='Core x-min')
 surfaces['Core x-max']         = openmc.XPlane(x0= 32.13, name='Core x-max')
 surfaces['Core y-min']         = openmc.YPlane(y0=-32.13, name='Core y-min')
