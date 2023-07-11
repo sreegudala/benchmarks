@@ -113,5 +113,5 @@ for rod, mat in zip(rodsArray, matsArray):
                 0 : 8,
                 1 : 8
                 }
-    universesArray.append(openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a))
+    universesArray.append(openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a, rad_div_type=0))
 
