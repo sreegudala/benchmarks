@@ -41,48 +41,6 @@ cells['UO2 Pin'].region                   = +surfaces['Pin Cell ZCylinder'] & \
 cells['Reflector'].fill                 = materials['Water']
 cells['UO2 Pin'].fill                   = materials['Water']
 
-'''
-# Use surface half-spaces to define regions
-cells['UO2'].region                       = -surfaces['Pin Cell ZCylinder']
-cells['MOX 4.3%'].region                  = -surfaces['Pin Cell ZCylinder']
-cells['MOX 7.0%'].region                  = -surfaces['Pin Cell ZCylinder']
-cells['MOX 8.7%'].region                  = -surfaces['Pin Cell ZCylinder']
-cells['Fission Chamber'].region           = -surfaces['Pin Cell ZCylinder']
-cells['Guide Tube'].region                = -surfaces['Pin Cell ZCylinder']
-cells['Control Rod'].region               = -surfaces['Pin Cell ZCylinder']
-cells['UO2 Moderator'].region             = +surfaces['Pin Cell ZCylinder']
-cells['MOX 4.3% Moderator'].region        = +surfaces['Pin Cell ZCylinder']
-cells['MOX 7.0% Moderator'].region        = +surfaces['Pin Cell ZCylinder']
-cells['MOX 8.7% Moderator'].region        = +surfaces['Pin Cell ZCylinder']
-cells['Fission Chamber Moderator'].region = +surfaces['Pin Cell ZCylinder']
-cells['Guide Tube Moderator'].region      = +surfaces['Pin Cell ZCylinder']
-cells['Control Rod Moderator'].region     = +surfaces['Pin Cell ZCylinder']
-cells['UO2 Pin'].region                   = +surfaces['Pin Cell ZCylinder'] & \
-                                            +surfaces['Pin x-min'] & \
-                                            -surfaces['Pin x-max'] & \
-                                            +surfaces['Pin y-min'] & \
-                                            -surfaces['Pin y-max']
-
-# Register Materials with Cells
-cells['UO2'].fill                       = materials['UO2']
-cells['MOX 4.3%'].fill                  = materials['MOX 4.3%']
-cells['MOX 7.0%'].fill                  = materials['MOX 7.0%']
-cells['MOX 8.7%'].fill                  = materials['MOX 8.7%']
-cells['Fission Chamber'].fill           = materials['Fission Chamber']
-cells['Guide Tube'].fill                = materials['Guide Tube']
-cells['Control Rod'].fill               = materials['Control Rod']
-cells['UO2 Moderator'].fill             = materials['Water']
-cells['MOX 4.3% Moderator'].fill        = materials['Water']
-cells['MOX 7.0% Moderator'].fill        = materials['Water']
-cells['MOX 8.7% Moderator'].fill        = materials['Water']
-cells['Fission Chamber Moderator'].fill = materials['Water']
-cells['Guide Tube Moderator'].fill      = materials['Water']
-cells['Control Rod Moderator'].fill     = materials['Water']
-cells['Reflector'].fill                 = materials['Water']
-cells['UO2 Pin'].fill                   = materials['Water']
-'''
-
-
 
 # Divisions should be set to either "original", "with mod", or "subdiv"
 divisions = "subdiv"
@@ -97,11 +55,13 @@ for rod, mat in zip(rodsArray, matsArray):
         mats  = [materials[mat],materials['Water']]
         subdivs_r = None
         subdivs_a = None
+        rad_div_types = None
     elif divisions == "with mod":
         surfs = [surfaces['Pin Cell ZCylinder'],surfaces['Moderator Cylinder']]
         mats  = [materials[mat],materials['Water'],materials['Water']]
         subdivs_r = None
         subdivs_a = None
+        rad_div_types = None
     else:
         surfs = [surfaces['Pin Cell ZCylinder'],surfaces['Moderator Cylinder']]
         mats  = [materials[mat],materials['Water'],materials['Water']]
@@ -113,5 +73,9 @@ for rod, mat in zip(rodsArray, matsArray):
                 0 : 8,
                 1 : 8
                 }
-    universesArray.append(openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a, rad_div_type=0))
+        rad_div_types = {
+                0 : "area",
+                1 : "radius"
+                }
+    universesArray.append(openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a, rad_div_types=rad_div_types))
 
