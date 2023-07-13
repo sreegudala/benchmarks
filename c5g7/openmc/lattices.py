@@ -162,7 +162,7 @@ lattices['Fine Moderator Mesh Lattice'] = \
         openmc.RectLattice(lattice_id=107, name='Fine Moderator Mesh Lattice')
 lattices['Fine Moderator Mesh Lattice'].dimension = [fine_mod_dim, fine_mod_dim]
 lattices['Fine Moderator Mesh Lattice'].lower_left = [-0.63, -0.63]
-lattices['Fine Moderator Mesh Lattice'].pitch = [0.126, 0.126]
+lattices['Fine Moderator Mesh Lattice'].pitch = [1.26/fine_mod_dim, 1.26/fine_mod_dim]
 w = universes['Reflector']
 lattices['Fine Moderator Mesh Lattice'].universes = [[w]*fine_mod_dim]*fine_mod_dim
 lattices['Fine Moderator Mesh Lattice'].outer = w
