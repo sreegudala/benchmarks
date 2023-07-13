@@ -165,8 +165,9 @@ lattices['Fine Moderator Mesh Lattice'].lower_left = [-0.63, -0.63]
 lattices['Fine Moderator Mesh Lattice'].pitch = [0.126, 0.126]
 w = universes['Reflector']
 lattices['Fine Moderator Mesh Lattice'].universes = [[w]*fine_mod_dim]*fine_mod_dim
+lattices['Fine Moderator Mesh Lattice'].outer = w
 cells['Fine Moderator Mesh Region'].fill            = lattices['Fine Moderator Mesh Lattice']
-universes['Fine Moderator Mesh Region']         = openmc.Universe(universe_id=9, name='Fine Moderator Mesh Region')
+universes['Fine Moderator Mesh Region']         = openmc.Universe(universe_id=18, name='Fine Moderator Mesh Region')
 universes['Fine Moderator Mesh Region']         .add_cell(cells['Fine Moderator Mesh Region'])
 
 
