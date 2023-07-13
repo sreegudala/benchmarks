@@ -40,7 +40,10 @@ lattices['Core'].pitch = [21.42, 21.42]
 w = universes['Reflector Unrodded Assembly']
 u = universes['UO2 Unrodded Assembly']
 m = universes['MOX Unrodded Assembly']
-lattices['Core'].universes = [[u, m, w], [m, u, w], [w, w, w]]
+rb = universes['Reflector Unrodded Bottom Assembly']
+rs = universes['Reflector Unrodded Side Assembly']
+rc = universes['Reflector Unrodded Corner Assembly']
+lattices['Core'].universes = [[u, m, rs], [m, u, rs], [rb, rb, rc]]
 cells['Core'].fill = lattices['Core']
 
 # Instantiate a Geometry, register the root Universe, and export to XML

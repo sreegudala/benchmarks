@@ -120,6 +120,7 @@ lattices['MOX Rodded Assembly'].universes = \
      [m, n, n, n, n, n, n, n, n, n, n, n, n, n, n, n, m],
      [m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m, m]]
 
+
 lattices['Reflector Unrodded Assembly'] = \
     openmc.RectLattice(lattice_id=105, name='Reflector Unrodded Assembly')
 lattices['Reflector Unrodded Assembly'].dimension = [1, 1]
@@ -127,6 +128,7 @@ lattices['Reflector Unrodded Assembly'].lower_left = [-10.71, -10.71]
 lattices['Reflector Unrodded Assembly'].pitch = [21.42, 21.42]
 w = universes['Reflector']
 lattices['Reflector Unrodded Assembly'].universes = [[w]]
+
 
 lattices['Reflector Rodded Assembly'] = \
     openmc.RectLattice(lattice_id=106, name='Reflector Rodded Assembly')
@@ -154,10 +156,83 @@ lattices['Reflector Rodded Assembly'].universes = \
      [u, u, u, u, u, u, u, u, u, u, u, u, u, u, u, u, u],
      [u, u, u, u, u, u, u, u, u, u, u, u, u, u, u, u, u]]
 
+
+fine_mod_dim = 10
+lattices['Fine Moderator Mesh Lattice'] = \
+        openmc.RectLattice(lattice_id=107, name='Fine Moderator Mesh Lattice')
+lattices['Fine Moderator Mesh Lattice'].dimension = [fine_mod_dim, fine_mod_dim]
+lattices['Fine Moderator Mesh Lattice'].lower_left = [-0.63, -0.63]
+lattices['Fine Moderator Mesh Lattice'].pitch = [0.126, 0.126]
+w = universes['Reflector']
+lattices['Fine Moderator Mesh Lattice'].universes = [[w]*fine_mod_dim]*fine_mod_dim
+cells['Fine Moderator Mesh Region'].fill            = lattices['Fine Moderator Mesh Lattice']
+universes['Fine Moderator Mesh Region']         = openmc.Universe(universe_id=9, name='Fine Moderator Mesh Region')
+universes['Fine Moderator Mesh Region']         .add_cell(cells['Fine Moderator Mesh Region'])
+
+
+lattices['Reflector Unrodded Bottom/Side Assembly Lattice'] = \
+        openmc.RectLattice(lattice_id=108, name='Reflector Unrodded Bottom/Side Assembly Lattice')
+lattices['Reflector Unrodded Bottom/Side Assembly Lattice'].dimension = [17, 17]
+lattices['Reflector Unrodded Bottom/Side Assembly Lattice'].lower_left = [-10.71, -10.71]
+lattices['Reflector Unrodded Bottom/Side Assembly Lattice'].pitch = [1.26, 1.26]
+w = universes['Reflector']
+f = universes['Fine Moderator Mesh Region']
+lattices['Reflector Unrodded Bottom/Side Assembly Lattice'].universes = \
+    [[f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f],
+     [f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f],
+     [f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f],
+     [f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f],
+     [f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f],
+     [f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f],
+     [f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f],
+     [f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f],
+     [f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f],
+     [f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f],
+     [f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f, f],
+     [w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w],
+     [w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w],
+     [w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w],
+     [w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w],
+     [w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w],
+     [w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w]]
+
+
+lattices['Reflector Unrodded Corner Assembly Lattice'] = \
+        openmc.RectLattice(lattice_id=109, name='Reflector Unrodded Corner Assembly Lattice')
+lattices['Reflector Unrodded Corner Assembly Lattice'].dimension = [17, 17]
+lattices['Reflector Unrodded Corner Assembly Lattice'].lower_left = [-10.71, -10.71]
+lattices['Reflector Unrodded Corner Assembly Lattice'].pitch = [1.26, 1.26]
+w = universes['Reflector']
+f = universes['Fine Moderator Mesh Region']
+lattices['Reflector Unrodded Corner Assembly Lattice'].universes = \
+    [[f, f, f, f, f, f, f, f, f, f, f, w, w, w, w, w, w],
+     [f, f, f, f, f, f, f, f, f, f, f, w, w, w, w, w, w],
+     [f, f, f, f, f, f, f, f, f, f, f, w, w, w, w, w, w],
+     [f, f, f, f, f, f, f, f, f, f, f, w, w, w, w, w, w],
+     [f, f, f, f, f, f, f, f, f, f, f, w, w, w, w, w, w],
+     [f, f, f, f, f, f, f, f, f, f, f, w, w, w, w, w, w],
+     [f, f, f, f, f, f, f, f, f, f, f, w, w, w, w, w, w],
+     [f, f, f, f, f, f, f, f, f, f, f, w, w, w, w, w, w],
+     [f, f, f, f, f, f, f, f, f, f, f, w, w, w, w, w, w],
+     [f, f, f, f, f, f, f, f, f, f, f, w, w, w, w, w, w],
+     [f, f, f, f, f, f, f, f, f, f, f, w, w, w, w, w, w],
+     [w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w],
+     [w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w],
+     [w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w],
+     [w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w],
+     [w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w],
+     [w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w, w]]
+
+
+
 # Add lattice to cells
-cells['UO2 Unrodded Assembly'].fill       = lattices['UO2 Unrodded Assembly']
-cells['UO2 Rodded Assembly'].fill         = lattices['UO2 Rodded Assembly']
-cells['MOX Unrodded Assembly'].fill       = lattices['MOX Unrodded Assembly']
-cells['MOX Rodded Assembly'].fill         = lattices['MOX Rodded Assembly']
-cells['Reflector Unrodded Assembly'].fill = lattices['Reflector Unrodded Assembly']
-cells['Reflector Rodded Assembly'].fill   = lattices['Reflector Rodded Assembly']
+cells['UO2 Unrodded Assembly'].fill                 = lattices['UO2 Unrodded Assembly']
+cells['UO2 Rodded Assembly'].fill                   = lattices['UO2 Rodded Assembly']
+cells['MOX Unrodded Assembly'].fill                 = lattices['MOX Unrodded Assembly']
+cells['MOX Rodded Assembly'].fill                   = lattices['MOX Rodded Assembly']
+cells['Reflector Unrodded Assembly'].fill           = lattices['Reflector Unrodded Assembly']
+cells['Reflector Rodded Assembly'].fill             = lattices['Reflector Rodded Assembly']
+cells['Reflector Unrodded Bottom Assembly'].fill    = lattices['Reflector Unrodded Bottom/Side Assembly Lattice']
+cells['Reflector Unrodded Side Assembly'].fill      = lattices['Reflector Unrodded Bottom/Side Assembly Lattice']
+cells['Reflector Unrodded Side Assembly'].rotation  = [0, 0, 90]
+cells['Reflector Unrodded Corner Assembly'].fill    = lattices['Reflector Unrodded Corner Assembly Lattice']
