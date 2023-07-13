@@ -46,18 +46,20 @@ for rod, mat in zip(rodsArray, matsArray):
         subdivs_r = None
         subdivs_a = None
         rad_div_types = None
+        implicit_azi_div = None
     elif divisions == "with mod":
         surfs = [surfaces['Pin Cell ZCylinder'],surfaces['Moderator Cylinder']]
         mats  = [materials[mat],materials['Water'],materials['Water']]
         subdivs_r = None
         subdivs_a = None
         rad_div_types = None
+        implicit_azi_div = None
     else:
         surfs = [surfaces['Pin Cell ZCylinder'],surfaces['Moderator Cylinder']]
         mats  = [materials[mat],materials['Water'],materials['Water']]
         subdivs_r = {
                 0 : 3,
-                1 : 3
+                1 : 2
                 }
         subdivs_a = {
                 0 : 8,
@@ -65,7 +67,8 @@ for rod, mat in zip(rodsArray, matsArray):
                 }
         rad_div_types = {
                 0 : "area",
-                1 : "area"
+                1 : "radius"
                 }
-    universesArray.append(openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a, rad_div_types=rad_div_types))
+        implicit_azi_div = 8
+    universesArray.append(openmc.model.pin_radial_azimuthal(surfs, mats, subdivisions_r=subdivs_r, subdivisions_a=subdivs_a, rad_div_types=rad_div_types, implicit_azi_div=implicit_azi_div))
 
