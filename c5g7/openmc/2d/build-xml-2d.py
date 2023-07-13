@@ -4,6 +4,7 @@ sys.path.append('../')
 from materials import materials
 from lattices import lattices, universes, cells
 from surfaces import surfaces
+from cells import divisions
 from tally import tallies
 
 ###############################################################################
@@ -43,7 +44,10 @@ m = universes['MOX Unrodded Assembly']
 rb = universes['Reflector Unrodded Bottom Assembly']
 rs = universes['Reflector Unrodded Side Assembly']
 rc = universes['Reflector Unrodded Corner Assembly']
-lattices['Core'].universes = [[u, m, rs], [m, u, rs], [rb, rb, rc]]
+if divisions == 'original' or divisions == 'with mod':
+    lattices['Core'].universes = [[u, m, w], [m, u, w], [w, w, w]] 
+else:
+    lattices['Core'].universes = [[u, m, rs], [m, u, rs], [rb, rb, rc]]
 cells['Core'].fill = lattices['Core']
 
 # Instantiate a Geometry, register the root Universe, and export to XML
